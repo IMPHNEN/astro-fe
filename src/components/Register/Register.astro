@@ -1,0 +1,118 @@
+---
+const errors = {
+  username: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+  term: '',
+};
+if (Astro.request.method === 'POST') {
+  try {
+    const data = await Astro.request.formData();
+    const name = data.get('username');
+    const email = data.get('email');
+    const password = data.get('password');
+    const confirmPassword = data.get('confirmPassword');
+    const term = data.get('term');
+    if (
+      typeof email !== 'string' ||
+      !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
+    ) {
+      errors.email = 'Please enter a valid email address.';
+    }
+    if (typeof name !== 'string' || name.length < 1) {
+      errors.username += 'Please enter a username. ';
+    }
+    if (typeof password !== 'string' || password.length < 6) {
+      errors.password += 'Password must be at least 6 characters. ';
+    }
+    if (typeof confirmPassword !== 'string' || confirmPassword !== password) {
+      errors.confirmPassword += 'Password Tidak Sesuai. ';
+    }
+    if (typeof term !== 'string' || term !== 'accepted') {
+      errors.term += 'Please,accept our terms';
+    }
+    // const hasErrors = Object.values(errors).some((msg) => msg);
+    // // if (!hasErrors) {
+    // //   await registerUser({name, email, password});
+    // //   return Astro.redirect("/login");
+    // // }
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+---
+
+<main class="grid grid-cols-12 container mx-auto h-svh p-5">
+  <div class="col-span-6">
+    <div class="w-full h-full p-5 bg-slate-500 rounded-xl"></div>
+  </div>
+  <div
+    class="col-span-6 h-full flex flex-col w-full justify-around items-center"
+  >
+    <div class="w-[50%] flex flex-col justify-around h-full">
+      <h1>Register</h1>
+      <form
+        class="flex flex-col w-full justify-start items-start gap-5"
+        method="POST"
+      >
+        <label class="flex gap-3 flex-col w-full">
+          Username:
+          <input
+            class="w-full p-1 border-black border rounded"
+            type="text"
+            name="username"
+          />
+        </label>
+        {errors.username && <p>{errors.username}</p>}
+        <label class="flex gap-3 flex-col w-full">
+          Email:
+          <input
+            class="w-full p-1 border-black border rounded"
+            type="email"
+            name="email"
+            required
+          />
+        </label>
+        {errors.email && <p>{errors.email}</p>}
+        <label class="flex gap-3 flex-col w-full">
+          Password:
+          <input
+            class="w-full p-1 border-black border rounded"
+            type="password"
+            name="password"
+            required
+            minlength="6"
+          />
+        </label>
+        <label class="flex flex-col gap-3 w-full">
+          Confirm Password:
+          <input
+            class="w-full p-1 border-black border rounded"
+            type="password"
+            name="Confirmpassword"
+            required
+            minlength="6"
+          />
+        </label>
+        {errors.password && <p>{errors.password}</p>}
+        <div class="flex flex-row gap-3 justify-center items-center">
+          <input type="checkbox" name="term" value="accepted" />
+          <div>check to accept our terms</div>
+        </div>
+        {errors.term && <p>{errors.term}</p>}
+        <div
+          class="flex bg-slate-200 py-2 rounded justify-center items-center w-full"
+        >
+          <button>Register</button>
+        </div>
+      </form>
+      <div class="flex justify-center items-center w-full flex-col gap-5">
+        <div>Login With</div>
+        <a href="">Google</a>
+      </div>
+    </div>
+  </div>
+</main>
