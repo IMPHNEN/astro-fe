@@ -1,0 +1,78 @@
+---
+const errors = {
+  email: '',
+  password: '',
+};
+if (Astro.request.method === 'POST') {
+  try {
+    const data = await Astro.request.formData();
+
+    const email = data.get('email');
+    const password = data.get('password');
+
+    if (
+      typeof email !== 'string' ||
+      !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
+    ) {
+      errors.email = 'Please enter a valid email address.';
+    }
+
+    if (typeof password !== 'string' || password.length < 6) {
+      errors.password += 'Password must be at least 6 characters. ';
+    }
+
+    // const hasErrors = Object.values(errors).some((msg) => msg);
+    // // if (!hasErrors) {
+    // //   await registerUser({name, email, password});
+    // //   return Astro.redirect("/login");
+    // // }
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+---
+
+<main class="grid grid-cols-12 container mx-auto h-svh p-5">
+  <div class="col-span-6">
+    <div class="w-full h-full p-5 bg-slate-500 rounded-xl"></div>
+  </div>
+  <div
+    class="col-span-6 h-full flex flex-col w-full justify-around items-center"
+  >
+    <div class="w-[50%] flex flex-col justify-around h-full">
+      <h1>Login</h1>
+      <form
+        class="flex flex-col w-full justify-start items-start gap-5"
+        method="POST"
+      >
+        <label class="flex gap-3 flex-col w-full">
+          Email:
+          <input
+            class="w-full p-1 border-black border rounded"
+            type="email"
+            name="email"
+            required
+          />
+        </label>
+        {errors.email && <p>{errors.email}</p>}
+        <label class="flex gap-3 flex-col w-full">
+          Password:
+          <input
+            class="w-full p-1 border-black border rounded"
+            type="password"
+            name="password"
+            required
+            minlength="6"
+          />
+        </label>
+        <div
+          class="flex bg-slate-200 py-2 rounded justify-center items-center w-full"
+        >
+          <button>Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
