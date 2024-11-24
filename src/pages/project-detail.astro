@@ -11,6 +11,9 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+
+import projectData from '@/data/projects.json';
+const project = projectData.projects[0];
 ---
 
 <Layout title="Project Detail" isLoggedIn={true}>
@@ -28,19 +31,15 @@ import {
       </div>
       <!-- Project thumbnail -->
       <div class="order-first col-span-4">
-        <!-- Description -->
+        <!-- Title and Description -->
         <section
           class="w-full max-w-sm px-2 sm:px-0 sm:max-w-2xl xl:container mx-auto mb-6 col-span-1"
         >
           <h1 class="text-2xl xl:text-3xl font-bold mb-5 mt-2.5">
-            Inisiatif Pendidikan Berkelanjutan 2024
+            {project.project_name}
           </h1>
           <p class="leading-relaxed">
-            Proyek ini bertujuan untuk meningkatkan akses dan kualitas
-            pendidikan di daerah terpencil melalui pengembangan kurikulum
-            berbasis teknologi dan pelatihan guru. Fokus utama adalah pada
-            pendidikan berkelanjutan yang mendukung pengembangan keterampilan
-            abad ke-21 dan inklusi digital bagi semua siswa.
+            {project.project_description}
           </p>
         </section>
         <!--/ Description -->
@@ -65,34 +64,36 @@ import {
           </div>
         </section>
         <!--/ Business Owner -->
-        <!-- Durasi, Progress, dan Budget -->
+        <!-- Duration, Progress, and Budget -->
         <section class="bg-accent sm:bg-inherit pb-6">
           <div
             class="w-full max-w-sm px-2 sm:px-0 sm:max-w-2xl xl:container mx-auto py-3"
           >
             <div class="mb-4">
-              <div class="text-xs sm:text-sm">Durasi proyek</div>
-              <div class="font-bold text-lg sm:text-xl">90 hari</div>
+              <div class="text-xs sm:text-sm">Project duration</div>
+              <div class="font-bold text-lg sm:text-xl">
+                {project.project_duration}
+              </div>
             </div>
             <Progress value={50} />
             <div class="flex flex-row justify-between mt-2">
               <div class="leading-none">
                 <span
                   class="font-bold text-primary text-lg sm:text-xl leading-none"
-                  >Rp250.000.000</span
+                  >$130000</span
                 >
                 <br />
                 <span class="text-xs sm:text-sm"
-                  >Terkumpul dari Rp500.000.000</span
+                  >from ${project.project_budget}</span
                 >
               </div>
               <div class="leading-none">
                 <div class="font-bold text-lg sm:text-xl leading-none">30</div>
-                <span class="text-xs sm:text-sm">hari lagi</span>
+                <span class="text-xs sm:text-sm">days left</span>
               </div>
             </div>
           </div>
-          <!--/ Durasi, Progress, dan Budget -->
+          <!--/ Duration, Progress, and Budget -->
           <!-- Call To Action -->
           <div
             class="w-full max-w-sm px-2 sm:px-0 sm:max-w-2xl xl:container mx-auto mt-2"
@@ -114,84 +115,44 @@ import {
     <div
       class="px-2 max-w-2xl sm:px-0 xl:grid xl:grid-cols-2 xl:container gap-4 mx-auto"
     >
-      <!-- Talent 1  -->
-      <section class="py-2">
-        <div class="w-full mx-auto md:container">
-          <Card>
-            <CardHeader className="px-4 sm:px-6">
-              <CardTitle
-                ><h2 class="text-lg">Senior Full Stack Developer</h2></CardTitle
-              >
-              <CardDescription>
-                <div
-                  class="flex flex-row justify-between md:justify-normal gap-8"
-                >
-                  <div>
-                    <span>Alokasi Budget</span>
-                    <br />
-                    <span class="font-bold text-base sm:text-lg text-black"
-                      >Rp25.000.000</span
-                    >
-                  </div>
-                  <Button className="self-end text-black" variant={'outline'}
-                    >Apply</Button
-                  >
-                </div>
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="px-4 sm:px-6">
-              <h3 class="text-sm sm:text-base text-muted-foreground">
-                Scope of work
-              </h3>
-              <ul class="list-disc ms-5">
-                <li>Pengembangan backend menggunakan Node.js dan Express</li>
-                <li>Implementasi frontend menggunakan React dan Next.js</li>
-                <li>Integrasi payment gateway dan sistem keamanan</li>
-                <li>Code review dan mentoring tim junior</li>
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-      <!--/ Talent 1  -->
-      <!-- Talent 2  -->
-      <section class="py-2">
-        <div class="w-full max-w-sm mx-auto md:container">
-          <Card>
-            <CardHeader className="px-4 sm:px-6">
-              <CardTitle><h2 class="text-lg">UI/UX Designer</h2></CardTitle>
-              <CardDescription>
-                <div
-                  class="flex flex-row justify-between md:justify-normal gap-8"
-                >
-                  <div>
-                    <span>Alokasi Budget</span>
-                    <br />
-                    <span class="font-bold text-base sm:text-lg text-black"
-                      >Rp18.000.000</span
-                    >
-                  </div>
-                  <Button className="self-end text-black" variant={'outline'}
-                    >Apply</Button
-                  >
-                </div>
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="px-4 sm:px-6">
-              <h3 class="text-sm sm:text-base text-muted-foreground">
-                Scope of work
-              </h3>
-              <ul class="list-disc ms-5">
-                <li>Desain user interface untuk web dan mobile</li>
-                <li>User research dan usability testing</li>
-                <li>Pembuatan design system</li>
-                <li>Prototyping dan user journey mapping</li>
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-      <!--/ Talent 2  -->
+      {
+        project.talents_required.map((talent, index) => (
+          <section class="py-2">
+            <div class="w-full mx-auto md:container">
+              <Card>
+                <CardHeader className="px-4 sm:px-6">
+                  <CardTitle>
+                    <h2 class="text-lg">{talent.job_title}</h2>
+                  </CardTitle>
+                  <CardDescription>
+                    <div class="flex flex-row justify-between md:justify-normal gap-8">
+                      <div>
+                        <span>Budget Allocation</span>
+                        <br />
+                        <span class="font-bold text-base sm:text-lg text-black">
+                          ${talent.budget_allocation}
+                        </span>
+                      </div>
+                      <Button
+                        className="self-end text-black"
+                        variant={'outline'}
+                      >
+                        Apply
+                      </Button>
+                    </div>
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="px-4 sm:px-6">
+                  <h3 class="text-sm sm:text-base text-muted-foreground">
+                    Scope of work
+                  </h3>
+                  <p>{talent.scope_of_work}</p>
+                </CardContent>
+              </Card>
+            </div>
+          </section>
+        ))
+      }
     </div>
   </section>
   <!--/ Talents required -->

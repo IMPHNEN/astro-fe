@@ -3,6 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import ProjectPagination from '@/components/ProjectPagination.astro';
 import { SearchForm } from '@/components/ui/search-form';
 import ProjectCard from '@/components/ProjectCard.astro';
+
+import projectData from '@/data/projects.json';
+const projectList = projectData.projects;
 ---
 
 <Layout title="Project List" isLoggedIn={true}>
@@ -19,33 +22,19 @@ import ProjectCard from '@/components/ProjectCard.astro';
   <div
     class="py-4 mx-auto max-w-sm md:container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
   >
-    <!-- Card 1 -->
-    <ProjectCard
-      progressValue={33}
-      collectedAmount="Rp157.058.000"
-      projectTitle="Judul Project 1"
-      businessOwnerName="Nama Business Creator"
-      imagePlaceholder="https://placehold.co/500x281"
-    />
-    <!--/ Card 1 -->
-    <!-- Card 2 -->
-    <ProjectCard
-      progressValue={50}
-      collectedAmount="Rp250.000.000"
-      projectTitle="Judul Project 2"
-      businessOwnerName="Nama Business Creator"
-      imagePlaceholder="https://placehold.co/500x281"
-    />
-    <!--/ Card 2 -->
-    <!-- Card 3 -->
-    <ProjectCard
-      progressValue={75}
-      collectedAmount="Rp375.000.000"
-      projectTitle="Judul Project 1"
-      businessOwnerName="Nama Business Creator"
-      imagePlaceholder="https://placehold.co/500x281"
-    />
-    <!--/ Card 3 -->
+    {
+      projectList
+        .slice(0, 9)
+        .map((project, index) => (
+          <ProjectCard
+            progressValue={33}
+            collectedAmount="Rp150.000.000"
+            projectTitle={project.project_name}
+            businessOwnerName="Nama Business Creator"
+            imagePlaceholder="https://placehold.co/500x281"
+          />
+        ))
+    }
   </div>
   <!--/ Grid layout -->
   <!-- Pagination -->

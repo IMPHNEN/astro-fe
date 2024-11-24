@@ -11,27 +11,31 @@ const {
 } = Astro.props;
 ---
 
-<section class="mb-2 md:p-6">
-  <div class="flex flex-col space-y-1.5 mb-4">
-    <AspectRatio ratio={16 / 9}>
-      <img
-        src={imagePlaceholder || 'https://placehold.co/500x281'}
-        alt=""
-        class="rounded-md object-cover hover:cursor-pointer"
-      />
-    </AspectRatio>
-    <div class="text-sm text-muted-foreground">{businessOwnerName}</div>
-    <p
-      class="font-semibold leading-none tracking-tight hover:underline hover:underline-offset-2 hover:cursor-pointer"
-    >
-      {projectTitle}
-    </p>
-  </div>
-  <div class="space-y-1.5">
-    <Progress value={progressValue} />
-    <div class="flex justify-between">
-      <p>Terkumpul {progressValue}%</p>
-      <p>{collectedAmount}</p>
+<a href="/project-detail">
+  <section
+    class="mb-2 md:p-4 hover:ring-2 ring-slate-200 rounded-lg transition-all duration-300 delay-75 hover:shadow-md"
+  >
+    <div class="flex flex-col space-y-1.5 mb-4">
+      <AspectRatio ratio={16 / 9}>
+        <img
+          src={imagePlaceholder || 'https://placehold.co/500x281'}
+          alt=""
+          class="rounded-md object-cover hover:cursor-pointer"
+        />
+      </AspectRatio>
+      <div class="text-sm text-muted-foreground">{businessOwnerName}</div>
+      <p
+        class="font-semibold leading-none tracking-tight hover:underline hover:underline-offset-2 hover:cursor-pointer"
+      >
+        {projectTitle}
+      </p>
     </div>
-  </div>
-</section>
+    <div class="space-y-1.5">
+      <Progress value={progressValue} />
+      <div class="flex justify-between">
+        <p>Terkumpul {progressValue}%</p>
+        <p>{collectedAmount}</p>
+      </div>
+    </div>
+  </section>
+</a>

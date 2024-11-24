@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button"
 import { Plus, Trash } from "lucide-react"
 import projectData from "@/data/projects.json"
 
-
 export default function ResultForm() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -16,7 +15,7 @@ export default function ResultForm() {
   }
 
   const project = projectData.projects[0]
-  
+
   return (
     <div className="w-full sm:w-9/12 mx-auto rounded-none md:rounded-md p-4 md:p-8 shadow-input bg-white dark:bg-black">
       <form className="my-8" onSubmit={handleSubmit} method="POST">
@@ -28,7 +27,7 @@ export default function ResultForm() {
             type="text"
             placeholder="What is your project name?"
             showAnimation={false}
-            value={project.project_name}
+            defaultValue={project.project_name}
           />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
@@ -42,7 +41,7 @@ export default function ResultForm() {
            disabled:cursor-not-allowed disabled:opacity-50
            dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
            "
-            value={project.project_description}
+            defaultValue={project.project_description}
           />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
@@ -54,8 +53,8 @@ export default function ResultForm() {
             showAnimation={false}
             className="inline max-w-[150px]"
             min={0}
-            value={project.project_duration}
-           />
+            defaultValue={project.project_duration}
+          />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="project_budget">Project Budget</Label>
@@ -68,7 +67,7 @@ export default function ResultForm() {
               showAnimation={false}
               className="inline max-w-[200px]"
               min={0}
-              value={project.project_budget}
+              defaultValue={project.project_budget}
             />
           </div>
         </LabelInputContainer>
@@ -111,7 +110,7 @@ export default function ResultForm() {
                   showAnimation={false}
                   className="inline max-w-[200px]"
                   min={0}
-                  value={talent.budget_allocation}
+                  defaultValue={talent.budget_allocation}
                 />
               </div>
             </LabelInputContainer>
@@ -126,7 +125,7 @@ export default function ResultForm() {
            disabled:cursor-not-allowed disabled:opacity-50
            dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
            "
-                value={talent.scope_of_work}
+                defaultValue={talent.scope_of_work}
               />
             </LabelInputContainer>
           </section>
