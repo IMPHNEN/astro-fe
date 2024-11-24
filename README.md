@@ -1,54 +1,74 @@
-# Astro Starter Kit: Basics
+# IdeaGo Frontend
 
-```sh
-npm create astro@latest -- --template basics
+This is frontend repository of **IdeaGo**, a platform where business creators, investors, and freelancers can connect and collaborate. Built using the Astro framework, this project aims to provide a seamless user experience for all participants.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Development](#development)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+
+**IdeaGo** is a platform designed to facilitate collaboration among business creators, investors, and freelancers. The platform offers unique features for each type of user:
+
+- **Business Creators**: Can create projects with AI assistance.
+- **Investors**: Can monitor a list of projects to find potential investment opportunities.
+- **Freelancers**: Can apply to projects created by business creators.
+
+## Features
+
+- **AI-Assisted Project Creation**: Business creators can utilize AI tools to enhance their project proposals.
+- **Project Monitoring for Investors**: Investors have access to a curated list of projects.
+- **Freelancer Applications**: Freelancers can browse and apply to projects that match their skills.
+
+## Installation
+
+To get started with the frontend development, follow these steps:
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/IMPHNEN/astro-fe.git
+   ```
+2. **Navigate to the project directory**:
+   ```bash
+   cd astro-fe
+   ```
+3. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+## Development
+
+To start the development server, run the following command:
+
+```bash
+npm run dev
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+This will start the Astro development server, and you can view the site at http://localhost:3000.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Contributing
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+We welcome contributions from the community! If you'd like to contribute, please follow these steps:
 
-## 🚀 Project Structure
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature/YourFeatureName`.
+3. Make your changes and commit them: `git commit -m 'Add some feature'`.
+4. Push to the branch: `git push origin feature/YourFeatureName`.
+5. Submit a pull request.
 
-Inside of your Astro project, you'll see the following folders and files:
+Please make sure your code adheres to our coding standards and includes appropriate tests.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+If you have any questions or need further assistance, please don't hesitate to ask!
+For support, please open an issue in the GitHub repository.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## License
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Feel free to customize any section as needed. If you have any questions or need further assistance, please don't hesitate to ask!
