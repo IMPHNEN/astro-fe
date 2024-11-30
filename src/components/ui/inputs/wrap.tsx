@@ -22,7 +22,7 @@ export const InputWrap: FC<TInputWrap> = (props): ReactElement => {
       </label>
       {props.children}
       {props.message ? (
-        <span className="text-red-400 font-xs mt-[-4px]">{props.message}</span>
+        <span className="text-red-400 text-xs mt-[-4px]">{props.message}</span>
       ) : null}
     </div>
   );

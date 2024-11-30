@@ -26,7 +26,7 @@ export const LayoutAuth: FC = (): ReactElement => {
             />
           </div>
         </div>
-        <div className="col-span-12 lg:col-span-6 h-full flex flex-col w-full justify-around items-cente px-8">
+        <div className="col-span-12 lg:col-span-6 h-full flex flex-col w-full justify-around items-center px-0 md:px-8">
           <Outlet />
         </div>
       </section>

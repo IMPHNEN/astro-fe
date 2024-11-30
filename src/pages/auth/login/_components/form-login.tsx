@@ -9,7 +9,7 @@ export const FormLogin: FC = (): ReactElement => {
   const { handler, isPending, form } = useLogin();
   return (
     <form
-      className="gap-y-6 bg-white shadow-sm shadow-gray-100 flex flex-col rounded-lg w-full p-6"
+      className="gap-y-6 bg-white shadow-sm shadow-gray-100 flex flex-col border-0 sm:border rounded-lg w-full max-w-lg px-0 md:p-6"
       onSubmit={handler.onSubmit}
     >
       <div className="flex flex-col gap-y-1">
