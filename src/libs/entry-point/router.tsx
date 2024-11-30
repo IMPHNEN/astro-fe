@@ -5,6 +5,7 @@ import { RegisterPage } from '@/pages/auth/register/_page';
 import { GenerateLayout } from '@/pages/generate/_components/layout';
 import { GeneratePage } from '@/pages/generate/_page';
 import { GenerateResultPage } from '@/pages/generate/result/_page';
+import { ProjectsListPage } from '@/pages/projects/_page';
 import { createBrowserRouter, redirect } from 'react-router-dom';
 
 export const routes = createBrowserRouter([
@@ -21,6 +22,10 @@ export const routes = createBrowserRouter([
         element: <GeneratePage />,
       },
     ],
+  },
+  {
+    path: ROUTE_URL.PROJECTS.ROOT,
+    element: <ProjectsListPage />,
   },
   {
     path: ROUTE_URL.GENERATE.RESULT,

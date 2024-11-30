@@ -7,12 +7,10 @@ export type TGenerateResponse = {
   project_description: string;
   project_duration: string;
   project_budget: number;
-  talents_required: [
-    {
-      job_title: string;
-      budget_allocation: number;
-      scope_of_work: string;
-      url_redirect: string;
-    },
-  ];
+  talents_required: Array<{
+    job_title: string;
+    budget_allocation: number;
+    scope_of_work: string;
+    url_redirect: string;
+  }>;
 };

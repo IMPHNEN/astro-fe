@@ -10,6 +10,7 @@ import {
   type UseControllerProps,
 } from 'react-hook-form';
 import { clsx } from 'clsx';
+import { cn } from '@/utils/cn';
 
 type TInputText<T extends FieldValues> = Omit<
   TInputWrap,
@@ -25,7 +26,8 @@ export const InputText = <T extends FieldValues>(
     field,
     fieldState: { error },
   } = useController<T>(props);
-  const className = clsx(
+  const { className, ...rest } = props;
+  const classNameQuery = clsx(
     'focus:outline-none focus:ring-none border-[2px] p-2 rounded-lg placeholder:text-gray-400 placeholder:text-sm w-full',
     {
       'border-red-300 placeholder:text-red-400 text-red-400': error?.message,
@@ -34,7 +36,7 @@ export const InputText = <T extends FieldValues>(
   );
   return (
     <InputWrap message={error?.message} {...props}>
-      <input className={className} {...props} {...field} />
+      <input className={cn(classNameQuery, className)} {...rest} {...field} />
     </InputWrap>
   );
 };

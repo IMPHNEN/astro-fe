@@ -6,7 +6,7 @@ import { cn } from '@/utils/cn';
 export const Button: FC<TButton> = (props): ReactElement => {
   const { variant = 'primary', className, ...rest } = props;
   const classNameQuery = clsx(
-    'py-3 px-4 w-full text-sm font-semibold disabled:opacity-50',
+    'py-3 px-4 w-full text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2',
     {
       'bg-black text-white': variant === 'primary',
       'bg-secondary text-black': variant === 'secondary',
