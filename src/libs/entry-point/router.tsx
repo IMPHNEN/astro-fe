@@ -20,11 +20,11 @@ export const routes = createBrowserRouter([
         path: ROUTE_URL.GENERATE.ROOT,
         element: <GeneratePage />,
       },
-      {
-        path: ROUTE_URL.GENERATE.RESULT,
-        element: <GenerateResultPage />,
-      },
     ],
+  },
+  {
+    path: ROUTE_URL.GENERATE.RESULT,
+    element: <GenerateResultPage />,
   },
   {
     path: ROUTE_URL.AUTH.ROOT,
